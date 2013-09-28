@@ -29,6 +29,8 @@ vector<vector<int> > TripleSum::threeSum(vector<int> &num) {
 						if (find(result.begin(), result.end(), item) == result.end())
 							result.push_back(item);
 						item.clear();
+						j++;
+						k--;
 					}
 		}
 	}
