@@ -30,8 +30,15 @@ This document is to summarize the solutions of LeetCode problems.
 - `MedianofTwoSortedArrays`: `tricky problem`. use `divide and conquer`. `if A[mid] < B[mid], then the value should not in A[0]...A[mid]`. Similarly, `B[mid] < A[mid], then the value should not in B[0]...A[mid]`.
 - `MergeIntervals`: similar to `InsertInterval`.
 - `MergekSortedLists`: simply `#linkedlist` problem.
-- `MergeSortedArray`: do it in-space. pointer k to the last index of A's capacity. pointer i to the last index of A's actual values, pointer j to the last index of B. each time determine whether A[i] or B[j] will be assigned to A[k].
-`MergeTwoSortedLists`: simple `linkedlist` problem.
-`MinimumDepthofBinaryTree`: simple `#binarytree` `#tree` problem.
-`MinimumPathSum`: simple `#dp` problem.
-`MinimumWindowSubstring`: `tricky problem`. two pointers - `head` and `tail`. `tail` would be increased, until find a window (a `#hashtable` is used to make such a decision). Then, shrink the window by increasing `head`.
+- `MergeSortedArray`: do it in-space. pointer `k` to the last index of `A's` capacity. pointer `i` to the last index of `A's` actual values, pointer `j` to the last index of `B`. each time determine whether `A[i]` or `B[j]` will be assigned to `A[k]`.
+- `MergeTwoSortedLists`: simple `linkedlist` problem.
+- `MinimumDepthofBinaryTree`: simple `#binarytree` `#tree` problem.
+- `MinimumPathSum`: simple `#dp` problem.
+- `MinimumWindowSubstring`: `tricky problem`. two pointers - `head` and `tail`. `tail` would be increased, until find a window (a `#hashtable` is used to make such a decision). Then, shrink the window by increasing `head`.
+- `MultiplyStrings`: multiply manually. `more practice`.
+- `N-Queens`: simple `#dfs` problem.
+- `N-QueensII`: simple `#dfs` problem.
+- `NextPermutation`: `tricky problem`. First, start from the end of the sequence, find the first index i where an increasing sequence exists. Then start from the end of the sequence again, find the first index `j`, where `a[i] < a[j]` and `i < j`. swap `a[i]` and `a[j]` and `reverse(a.begin()+i+1, a.end())`.
+- `PalindromeNumber`: simple problem.
+- `PalindromePartitioning`: partition the string into two parts, if the first part is palindrome, then continue.
+`PalindromePartitioningII`: `tricky #dp problem`. #dp to determine whether a substring, `s[i]..s[j]`, palindrome - `recs[i][j] = s[i] == s[j] && recs[i+1][j-1]`. use #dp to determine whether a cut is required - `opt[j] = min(opt[j], opt[i]+1)`, if `s[i+1]..[j]` is palindrome.
