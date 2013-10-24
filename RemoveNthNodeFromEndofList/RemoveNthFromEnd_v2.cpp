@@ -27,7 +27,7 @@ public:
         *prev = (*prev)->next;
         free(delNode);
         head = dummyNode->next;
-        free(dummyNode);
+        delete dummyNode;
         return head;
     }
 };

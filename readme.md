@@ -79,7 +79,7 @@ This document is to summarize the solutions of LeetCode problems.
 - `RegularExpressionMatching`: tricky problem. oen pointer `i` to the first string `s1`, one pointer `j` to the second string `s2`. Each time if `s2[j+1] == '*'`, we need to check `isMatch(s1[i]...s1[n], s2[j+2]...s2[m])` and increase `i` until `s1[i] != s2[j]`. Then, we need to check `isMatch(s1[i]...s1[n], s2[j+2]...s2[m])` for next segment. if `s2[j+1] != '*'`, if `s1[i] == s2[j]` then check `isMatch(s1[i+1]...s1[n], s2[j+1]...s2[m])`, otherwise, return false. `'.'` would be treated as the same to any `s1[i]`.
 - `RemoveDuplicatesfromSortedArray`: simple problem.
 - `RemoveDuplicatesfromSortedArrayII`: simple problem.
-- `RemoveDuplicatesfromSortedList`: simple `#linkedlist` problem. Try with `double linkedlist`.
-- `RemoveDuplicatesfromSortedListII`: simple `#linkedlist` problem. Try with `double linkedlist`.
+- `RemoveDuplicatesfromSortedList`: simple `#linkedlist` problem. Try with `double pointer`.
+- `RemoveDuplicatesfromSortedListII`: simple `#linkedlist` problem. Try with `double pointer`.
 - `RemoveElement`: simple problem. Two pointers, `i` to head, `j` to tail. each time `A[i] == elem`, `swap(A[i], A[j--])`, otherwise `i++`.
-- `RemoveNthNodeFromEndofList`: simple `#linkedlist` problem. Try with `double linkedlist`.
+- `RemoveNthNodeFromEndofList`: simple `#linkedlist` problem. Try with `double pointer`.
