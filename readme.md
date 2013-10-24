@@ -13,11 +13,31 @@ This document is to summarize the solutions of LeetCode problems.
 - `BestTimetoBuyandSellStock`: simple problem.
 - `BestTimetoBuyandSellStockII`: simple problem.
 - `BestTimetoBuyandSellStockIII`: `tricky #dp problem`. `divide and conquer`. find the max profit of `0..i` and `i+1...n`, each of them is in just one transaction. get the i for optimal profit.
+- `BinaryTreeInorderTraversal`: simple `#tree` `binarytree` problem. recursive method is trival. iterative method is as follows. one stack `recs` is used to store each node. if the left node is NULL, pop up the top node `i` in the stack `recs`, and then traversal the node `i->right`.
+- `BinaryTreeLevelOrderTraversal`: simple `#tree` `#binarytree` `#bst` problem. `#bst` the tree level by level.
+- `BinaryTreeLevelOrderTraversalII`: simple `#tree` `#binarytree` `#bst` problem. the same method used in `BinaryTreeLevelOrderTraversal`, and then reverse the result.
+- `BinaryTreeMaximumPathSum`: simple `#tree` `#binarytree` problem. for each node `i`, `max(leftPathSum+i->val, rightPathSum+i->val, leftPathSum+rightPathSum+i->val)` and return `max(leftPathSum+i->val, rightPathSum+i->val)` to parent.
+- `BinaryiTreeZigzagLevelOrderTraversal`: simple `#tree` `#binarytree` problem. use odd and even level to control whether reverse the vector.
+- `Candy`: tricky problem. scan from beginning, `if ratings[i] > ratings[i-1]` `num[i] = num[i-1] + 1`. It can assign the candy to each increasing interval. Then, scan from the end, if `num[i]` is already assigned by a number, if `ratings[i] > ratings[i+1]`, then `i` is at the peak, make sure `num[i] > num[i+1]`, otherwise, `num[i] = num[i+1] + 1`. if `num[i]` is not assigned yet, make it to be 1.
+- `ClimbingStairs`: simple `#dp` problem. `steps[i] = steps[i-1] +steps[i-2]`.
+- `CloneGraph`: `#hashtable` problem. use a `#hash` to store the nodes already created. Every time, first check whether the node is already created.
+- `CombinationSum`: simple knapsack problem. `#dp`. The numbers can be reused. Scan from the beginning. Use `unordered_map<int, <vector<int> > path` to store the previous number that can reach this number. Use recussive method to retrieve the path.
+- `CombinationSumII`: simple knapsack problem. `#dp`. The numbers could not be reused. Scan from the end. Use `unordered_map<int, <vector<int> > path` to store the previous number's index that can reach this number. Use recussive method to retrieve the path.
+- `Combinations`: simple `#dfs` problem.
+- `ConstructBinaryTreefromInorderandPostorderTraversal`: simple `#tree` `#binarytree` problem. The last elemeent in postorder traversal is the root node which can be used to split the inorder traversal.
+- `ConstructBinaryTreefromPreorderandInorderTraversal`: simple `#tree` `#binarytree` problem. The first elemeent in preorder traversal is the root node which can be used to split the inorder traversal.
+- `ContainerWithMostWater`: tricky problem. Two pointers, `i` to the frist, `j` to the end. Compute `max(res, min(height[i], height[j])*(j-i))`, Then `i++` if `height[i] < height[j]`, otherwise, `j--`.
+- `ConvertSortedArraytoBinarySearchTree`: simple `#tree` `#binarytree` `#bisection` `#recussive` problem. Use element in the middle as the root each time. and build left subtree and right subtree using left section and right section in the array.
+- `ConvertSortedListtoBinarySearchTree`: simple `#tree` `#binarytree` `#linkedlist` `#recussive` problem. The same method used in `ConvertSortedArraytoBinarySearchTree`, but need a function to compute the length of list and find the element in list by index.
+- `CopyListwithRandomPointer`: `#hashtable`. The same method used in `CloneGraph`. A `#hashtable` is used to store the node already created.
+- `CountandSay`: simple problem. Just simple use the rule described in the problem to generate the string.
+- `DecodeWays`: simple `#dp` problem. `opt[i] = opt[i-2] + opt[i-1]` if `s[i-1]..s[i]` can be decoded, otherwise, `opt[i] = opt[i-1]`.
+- `DistinctSubsequences`: simple `#dp` problem. `opt[i][j]` represents the number of distinct subsequences for `T[0]..T[i-1]` and `S[0]..S[j-1]`. `opt[i+1][j+1] = opt[i][j] + opt[i+1][j]` if `T[i] == S[j]`, otherwise, `opt[i+1][j+1] = opt[i+1][j]`.
 - `DivideTwoIntegers`: trick `#bitshift` problem. `b << 1` until `b` is larger than `a` with `i` times shift and record the result after each shift in `inc[i]`. Then, `a -= inc[i]` and `res += 1 << i` until `a <= 0` or `i < 0`.
 - `InsertInterval`: scan the whole intervals, each time get the smallest for newInterval.start and the largest for newInterval.end.
-- `LargestRectangleinHistogram`: `tricky problem`. push each area into the stack, until the current height is lower than that of the top element in the stack. Then, pop up the areas in the stack and compute them for each top element in the stack whose height is higher or equals to current height. Then, push the new area with current height and the new width into the stack again.
 - `GasStation`: `tricky problem`. scan all gas stations and compute `total += gas[i] - cost[i]` and `tank += gas[i] - cost[i]`. `if tank < 0, mark i and set tank = 0`. after done, `if total > 0, then return (i+1) % gas.size() else -1`. The reason why `(i+1) % gas.size()` could be a starting point is that for every previous point `k`, `tank(k) = tank(k-1) + gas[k] - cost[k]`, where `tank(k-1) >= 0`, it could not make `tank(i) = tank(i-1) + gas[i] - cost[i] >= 0`, then it would also not make `tank(i) >= 0 if tank(k) = gas[k] - cost[k]`, which makes `k` to be the starting point.
 - `GrayCode`: convert a binary to the gray code by `GrayCode(i) = (i>>1)^i`.
+- `LargestRectangleinHistogram`: `tricky problem`. push each area into the stack, until the current height is lower than that of the top element in the stack. Then, pop up the areas in the stack and compute them for each top element in the stack whose height is higher or equals to current height. Then, push the new area with current height and the new width into the stack again.
 - `LengthofLastWord`: simple problem.
 - `LetterCombinationsofaPhoneNumber`: simple problem.
 - `LongestCommonPrefix`: hash the prefix of each string. `#hashtable`
@@ -56,4 +76,10 @@ This document is to summarize the solutions of LeetCode problems.
 - `PopulatingNextRightPointersinEachNode`: simple `#tree` `#binarytree` problem. `node->left->next = node->right ? node->right : getNext(node)`. `node->right->next = getNext(node)`. In `getNext(node)`, get the next sibling by iterating all `node = node->next` and return `node->left` or `node->right`. After one node finished, go further to `node->right` first, since it can build the next pointer which may be used in the left node.
 - `RecoverBinarySearchTree`: `#tree` `binarytree` problem. inorder traversal the tree. first found `prev->val > node(j)->val` then `prev` would be the first node in wrong position. the second time found `prev->val > node(j)->val` then `j` woudl be the second node.
 - `Pow(x, n)`: tricky `#bitshift` problem. say, `3^5 = (3^1)*(3^4) = (3^(2^0))*(3^(2^2))` and `5` in binary is `101`. make `n` in binary, if the bit `i` in `n` is `1`, then we can have `x^(2^i)`.
-`RegularExpressionMatching`: tricky problem. oen pointer `i` to the first string `s1`, one pointer `j` to the second string `s2`. Each time if `s2[j+1] == '*'`, we need to check `isMatch(s1[i]...s1[n], s2[j+2]...s2[m])` and increase `i` until `s1[i] != s2[j]`. Then, we need to check `isMatch(s1[i]...s1[n], s2[j+2]...s2[m])` for next segment. if `s2[j+1] != '*'`, if `s1[i] == s2[j]` then check `isMatch(s1[i+1]...s1[n], s2[j+1]...s2[m])`, otherwise, return false. `'.'` would be treated as the same to any `s1[i]`.
+- `RegularExpressionMatching`: tricky problem. oen pointer `i` to the first string `s1`, one pointer `j` to the second string `s2`. Each time if `s2[j+1] == '*'`, we need to check `isMatch(s1[i]...s1[n], s2[j+2]...s2[m])` and increase `i` until `s1[i] != s2[j]`. Then, we need to check `isMatch(s1[i]...s1[n], s2[j+2]...s2[m])` for next segment. if `s2[j+1] != '*'`, if `s1[i] == s2[j]` then check `isMatch(s1[i+1]...s1[n], s2[j+1]...s2[m])`, otherwise, return false. `'.'` would be treated as the same to any `s1[i]`.
+- `RemoveDuplicatesfromSortedArray`: simple problem.
+- `RemoveDuplicatesfromSortedArrayII`: simple problem.
+- `RemoveDuplicatesfromSortedList`: simple `#linkedlist` problem. Try with `double linkedlist`.
+- `RemoveDuplicatesfromSortedListII`: simple `#linkedlist` problem. Try with `double linkedlist`.
+- `RemoveElement`: simple problem. Two pointers, `i` to head, `j` to tail. each time `A[i] == elem`, `swap(A[i], A[j--])`, otherwise `i++`.
+- `RemoveNthNodeFromEndofList`: simple `#linkedlist` problem. Try with `double linkedlist`.
