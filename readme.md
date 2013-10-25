@@ -83,3 +83,12 @@ This document is to summarize the solutions of LeetCode problems.
 - `RemoveDuplicatesfromSortedListII`: simple `#linkedlist` problem. Try with `double pointer`.
 - `RemoveElement`: simple problem. Two pointers, `i` to head, `j` to tail. each time `A[i] == elem`, `swap(A[i], A[j--])`, otherwise `i++`.
 - `RemoveNthNodeFromEndofList`: simple `#linkedlist` problem. Try with `double pointer`.
+- `ReverseInteger`: simple problem.
+- `ReverseLinkedListII`: simple problem. try 'double pointer'. Each time change the tail node to the head.
+- `ReverseNodesink-Group`: simple problem. similar to `ReverseLinkedListII`. try `double pointer`.
+- `RestoreIPAddresses`: simple `#dfs` problem. check `0 <= each segment <= 255`.
+- `RomantoInteger`: simple problem.
+- `RotateImage`: `tricky problem`. need more practice. rotate by layer. think about the swap.
+- `RotateList`: simple `#linkedlist` problem.
+- `SameTree`: simple `#tree` `#binarytree` problem.
+- `SortColors`: simple problem. three pointers, `i, k, j` to `0, 1, 2`, respectively. move `k` to determine `swap(A[i], A[k])` or `swap(A[k], A[j])` or `k++`.
