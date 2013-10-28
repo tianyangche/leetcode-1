@@ -27,7 +27,7 @@ This document is to summarize the solutions of LeetCode problems.
 - `ConstructBinaryTreefromInorderandPostorderTraversal`: simple `#tree` `#binarytree` problem. The last elemeent in postorder traversal is the root node which can be used to split the inorder traversal.
 - `ConstructBinaryTreefromPreorderandInorderTraversal`: simple `#tree` `#binarytree` problem. The first elemeent in preorder traversal is the root node which can be used to split the inorder traversal.
 - `ContainerWithMostWater`: tricky problem. Two pointers, `i` to the frist, `j` to the end. Compute `max(res, min(height[i], height[j])*(j-i))`, Then `i++` if `height[i] < height[j]`, otherwise, `j--`.
-- `ConvertSortedArraytoBinarySearchTree`: simple `#tree` `#binarytree` `#bisection` `#recussive` problem. Use element in the middle as the root each time. and build left subtree and right subtree using left section and right section in the array.
+- `ConvertSortedArraytoBinarySearchTree`: simple `#tree` `#binarytree` `#binarysearch` `#recussive` problem. Use element in the middle as the root each time. and build left subtree and right subtree using left section and right section in the array.
 - `ConvertSortedListtoBinarySearchTree`: simple `#tree` `#binarytree` `#linkedlist` `#recussive` problem. The same method used in `ConvertSortedArraytoBinarySearchTree`, but need a function to compute the length of list and find the element in list by index.
 - `CopyListwithRandomPointer`: `#hashtable`. The same method used in `CloneGraph`. A `#hashtable` is used to store the node already created.
 - `CountandSay`: simple problem. Just simple use the rule described in the problem to generate the string.
@@ -91,4 +91,24 @@ This document is to summarize the solutions of LeetCode problems.
 - `RotateImage`: `tricky problem`. need more practice. rotate by layer. think about the swap.
 - `RotateList`: simple `#linkedlist` problem.
 - `SameTree`: simple `#tree` `#binarytree` problem.
+- `ScrambleString`: `tricky problem`. `#dp`. for each `s1[i1]..s1[j1]` and `s2[i2]..s2[j2]`, check `isScramble(s1[i1], s1[i1+i], s2[i2], s2[i2+i]) && isScramble(s1[i1+i+1], s1[j1], s2[i2+i+1], s2[j2])` and `isScramble(s1[i1], s1[i1+i], s2[j2-i+1], s2[j2]) && isScramble(s1[i1+i+1], s1[j1], s2[i2], s2[j2-i])`.
+- `Searcha2DMatrix`: simple problem. `#binarysearch`.
+- `SearchforaRange`: simple problem. `#binarysearch`.
+- `SearchinRotatedSortedArray`: `tricky #binarysearch problem`. `more practice`. if `A[mid] >= A[begin]`, then check `A[mid] > target && target >= A[begin]`; otherwise, check `A[mid] > target || target >= A[begin]`.
+- `SearchinRotatedSortedArrayII`: `tricky #binarysearch problem`. `more practice`. similar to `SearchinRotatedSortedArray`, except if `A[mid] == A[begin]`, `begin++`.
+- `SearchInsertPosition`: simple `#binarysearch` problem.
+- `SetMatrixZeroes`: `tricky problem`. if `matrix[i][j] == 0`, set `matrix[i][0] = 0` and `matrix[0][j] = 0`. Then, check `matrix[i][0]` and `matrix[0][i]` to set 0 on the whole row or column.
+- `SimplifyPath`: consider the rule. `more practice`.
+- `SingleNumber`: `tricky problem`. `XOR` to all the elements.
 - `SortColors`: simple problem. three pointers, `i, k, j` to `0, 1, 2`, respectively. move `k` to determine `swap(A[i], A[k])` or `swap(A[k], A[j])` or `k++`.
+- `SpiralMatrix`: `tricky problem`. four pointer `beginX, endX, beginY, endY`. each time move `beginY++, endX--, endY--, beginX++`.
+- `SpiralMatrixII`: the same method as that of `SpiralMatrix`.
+- `Sqrt(x)`: `#binarysearch`. use `long long` to avoid overflow, since multiplication may cause overflow.
+- `StringtoInteger(atoi)`: consider all the possible inputs.
+- `Subsets`: `#dfs` problem. each time the element can be added to the subset or not.
+- `SubsetsII`: `#dfs` problem. for each duplicated elements, just find the end position of the duplicated element, and add them once.
+- `SubstringwithConcatenationofAllWords`: `tricky problem`. `#hashtable` to record all strings in L. for each position in S, check whether it is a good start using another `#hashtable` to record the strings matched in S.
+- `SumRoottoLeafNumbers`: simple problem. `#tree` `#binarytree`.
+- `SurroundedRegions`: `#dfs`. first check all `'O'` on the margin and mark them and `'O's` surrounded them. then modify all `'O's` which are not marked.
+- `SwapNodesinPairs`: `#linkedlist`. try `double pointers` on it.
+- `SymmetricTree`: `#tree` `#binarytree` problem. try recursive and iterative method. recursive method: each time check two nodes - `i`, `j` - and check `isSymmetric(i->left, j->right)` and `isSymmetric(i->right, j->left)`. iterative method, check by level.
