@@ -112,3 +112,9 @@ This document is to summarize the solutions of LeetCode problems.
 - `SurroundedRegions`: `#dfs`. first check all `'O'` on the margin and mark them and `'O's` surrounded them. then modify all `'O's` which are not marked.
 - `SwapNodesinPairs`: `#linkedlist`. try `double pointers` on it.
 - `SymmetricTree`: `#tree` `#binarytree` problem. try recursive and iterative method. recursive method: each time check two nodes - `i`, `j` - and check `isSymmetric(i->left, j->right)` and `isSymmetric(i->right, j->left)`. iterative method, check by level.
+- `TextJustification`: consider the number of space.
+- `TrappingRainWater`: How mach water can be contained in index `i` is determined by the heighest one on the left and right.
+- `Triangle`: calculate buttom-up.
+- `TwoSum`: `#hashtable` to record the position.
+- `UniqueBinarySearchTrees`: `tricky` `#tree` #binarytree` problem. iterate the root node `i` then `result += numTrees(left(i)) * numTrees(right(i))`.
+- `UniqueBinarySearchTreesII`: The same method as that of `UniqueBinarySearchTrees`. recursively generate the tree by iterating the node as root. Generate all leftChildTrees and rightChildTrees, and then generate them by making the node as root.
