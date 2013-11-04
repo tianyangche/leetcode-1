@@ -34,12 +34,23 @@ This document is to summarize the solutions of LeetCode problems.
 - `DecodeWays`: simple `#dp` problem. `opt[i] = opt[i-2] + opt[i-1]` if `s[i-1]..s[i]` can be decoded, otherwise, `opt[i] = opt[i-1]`.
 - `DistinctSubsequences`: simple `#dp` problem. `opt[i][j]` represents the number of distinct subsequences for `T[0]..T[i-1]` and `S[0]..S[j-1]`. `opt[i+1][j+1] = opt[i][j] + opt[i+1][j]` if `T[i] == S[j]`, otherwise, `opt[i+1][j+1] = opt[i+1][j]`.
 - `DivideTwoIntegers`: trick `#bitshift` problem. `b << 1` until `b` is larger than `a` with `i` times shift and record the result after each shift in `inc[i]`. Then, `a -= inc[i]` and `res += 1 << i` until `a <= 0` or `i < 0`.
-- `InsertInterval`: scan the whole intervals, each time get the smallest for newInterval.start and the largest for newInterval.end.
+- `EditDistance`: classic `#dp` problem.
+- `FirstMissingPositive`: `trick problem`. swap elements to put positive number `i` into the position `i-1`. scan from the beginning, find the first position `i` where `a[i] != i+1`, then return `i+1`.
+- `FlattenBinaryTreetoLinkedList`: `#tree` `#binarytree` problem. for each node `i`, find the right most node `j` for `i->left`, then make `j->right = i->right`, `i->right = i->left` and `i->left = NULL`.
 - `GasStation`: `tricky problem`. scan all gas stations and compute `total += gas[i] - cost[i]` and `tank += gas[i] - cost[i]`. `if tank < 0, mark i and set tank = 0`. after done, `if total > 0, then return (i+1) % gas.size() else -1`. The reason why `(i+1) % gas.size()` could be a starting point is that for every previous point `k`, `tank(k) = tank(k-1) + gas[k] - cost[k]`, where `tank(k-1) >= 0`, it could not make `tank(i) = tank(i-1) + gas[i] - cost[i] >= 0`, then it would also not make `tank(i) >= 0 if tank(k) = gas[k] - cost[k]`, which makes `k` to be the starting point.
+- `GenerateParentheses`: `#dfs` `#recusive` problem. generate `(` frist, then genrate `)`.
 - `GrayCode`: convert a binary to the gray code by `GrayCode(i) = (i>>1)^i`.
+- `ImplementstrStr()`: simple problem.
+- `InsertInterval`: scan the whole intervals, each time get the smallest for newInterval.start and the largest for newInterval.end.
+- `IntegertoRoman`: simple problem. check from the largest number represents in Roman.
+- `InterleavingString`: `tricky` `#dp` problem. `opt[i+1][j+1]` represents whether `s1[0]...s1[i]` and `s2[0]...s2[j]` can be interleaved to construct s3. check `s1[i] == s3[i+j+1]` and `s2[j] == s3[i+j+1]` to make `opt[i+1][j+1] = opt[i][j+1] || opt[i+1][j]`.
+- `JumpGame`: simple problem. each time check wehther this position can be reached by previuos position.
+- `JumpGameII`: find the further position for each step.
 - `LargestRectangleinHistogram`: `tricky problem`. push each area into the stack, until the current height is lower than that of the top element in the stack. Then, pop up the areas in the stack and compute them for each top element in the stack whose height is higher or equals to current height. Then, push the new area with current height and the new width into the stack again.
 - `LengthofLastWord`: simple problem.
 - `LetterCombinationsofaPhoneNumber`: simple problem.
+- `LinkedListCycle`: classic problem. two nodes, one moves forward one step, another moves forward two step, check wether thes two nodes would be overlapped.
+- `LinkedListCycleII`: classic problem. after detect the cycle using the method in `LinkedListCycle`. Go through from head and the intersected node, if they meet, then return that node.
 - `LongestCommonPrefix`: hash the prefix of each string. `#hashtable`
 - `LongestConsecutiveSequence`: `tricky problem`. put all elements into a hash first. iterate the elements in the hash, and check the length of left and right consecutive in the hash. `#hashtable`
 - `LongestPalindromicSubstring`: scan the index of the string, check whether palindrome when the index k is in the middle.
@@ -76,7 +87,7 @@ This document is to summarize the solutions of LeetCode problems.
 - `PopulatingNextRightPointersinEachNode`: simple `#tree` `#binarytree` problem. `node->left->next = node->right ? node->right : getNext(node)`. `node->right->next = getNext(node)`. In `getNext(node)`, get the next sibling by iterating all `node = node->next` and return `node->left` or `node->right`. After one node finished, go further to `node->right` first, since it can build the next pointer which may be used in the left node.
 - `RecoverBinarySearchTree`: `#tree` `binarytree` problem. inorder traversal the tree. first found `prev->val > node(j)->val` then `prev` would be the first node in wrong position. the second time found `prev->val > node(j)->val` then `j` woudl be the second node.
 - `Pow(x, n)`: tricky `#bitshift` problem. say, `3^5 = (3^1)*(3^4) = (3^(2^0))*(3^(2^2))` and `5` in binary is `101`. make `n` in binary, if the bit `i` in `n` is `1`, then we can have `x^(2^i)`.
-- `RegularExpressionMatching`: tricky problem. oen pointer `i` to the first string `s1`, one pointer `j` to the second string `s2`. Each time if `s2[j+1] == '*'`, we need to check `isMatch(s1[i]...s1[n], s2[j+2]...s2[m])` and increase `i` until `s1[i] != s2[j]`. Then, we need to check `isMatch(s1[i]...s1[n], s2[j+2]...s2[m])` for next segment. if `s2[j+1] != '*'`, if `s1[i] == s2[j]` then check `isMatch(s1[i+1]...s1[n], s2[j+1]...s2[m])`, otherwise, return false. `'.'` would be treated as the same to any `s1[i]`.
+- `RegularExpressionMatching`: `tricky problem`. one pointer `i` to the first string `s1`, one pointer `j` to the second string `s2`. Each time if `s2[j+1] == '*'`, we need to check `isMatch(s1[i]...s1[n], s2[j+2]...s2[m])` and increase `i` until `s1[i] != s2[j]`. Then, we need to check `isMatch(s1[i]...s1[n], s2[j+2]...s2[m])` for next segment. if `s2[j+1] != '*'`, if `s1[i] == s2[j]` then check `isMatch(s1[i+1]...s1[n], s2[j+1]...s2[m])`, otherwise, return false. `'.'` would be treated as the same to any `s1[i]`.
 - `RemoveDuplicatesfromSortedArray`: simple problem.
 - `RemoveDuplicatesfromSortedArrayII`: simple problem.
 - `RemoveDuplicatesfromSortedList`: simple `#linkedlist` problem. Try with `double pointer`.
@@ -86,6 +97,7 @@ This document is to summarize the solutions of LeetCode problems.
 - `ReverseInteger`: simple problem.
 - `ReverseLinkedListII`: simple problem. try 'double pointer'. Each time change the tail node to the head.
 - `ReverseNodesink-Group`: simple problem. similar to `ReverseLinkedListII`. try `double pointer`.
+- `ReorderList`: `#linkedlist` problem. use `emplace_back()` to push all elements into a `vector`. Use two pointers `i`, `j` to add elements from `i` or `j`.
 - `RestoreIPAddresses`: simple `#dfs` problem. check `0 <= each segment <= 255`.
 - `RomantoInteger`: simple problem.
 - `RotateImage`: `tricky problem`. need more practice. rotate by layer. think about the swap.
@@ -100,6 +112,7 @@ This document is to summarize the solutions of LeetCode problems.
 - `SetMatrixZeroes`: `tricky problem`. if `matrix[i][j] == 0`, set `matrix[i][0] = 0` and `matrix[0][j] = 0`. Then, check `matrix[i][0]` and `matrix[0][i]` to set 0 on the whole row or column.
 - `SimplifyPath`: consider the rule. `more practice`.
 - `SingleNumber`: `tricky problem`. `XOR` to all the elements.
+- `SingleNumberII`: `tricky problem`. `#bit`problem. calculate the occurrences of each number in each bit and mod `3`.
 - `SortColors`: simple problem. three pointers, `i, k, j` to `0, 1, 2`, respectively. move `k` to determine `swap(A[i], A[k])` or `swap(A[k], A[j])` or `k++`.
 - `SpiralMatrix`: `tricky problem`. four pointer `beginX, endX, beginY, endY`. each time move `beginY++, endX--, endY--, beginX++`.
 - `SpiralMatrixII`: the same method as that of `SpiralMatrix`.
@@ -108,6 +121,7 @@ This document is to summarize the solutions of LeetCode problems.
 - `Subsets`: `#dfs` problem. each time the element can be added to the subset or not.
 - `SubsetsII`: `#dfs` problem. for each duplicated elements, just find the end position of the duplicated element, and add them once.
 - `SubstringwithConcatenationofAllWords`: `tricky problem`. `#hashtable` to record all strings in L. for each position in S, check whether it is a good start using another `#hashtable` to record the strings matched in S.
+- `SudokuSolver`: find each `'.'` and try `1-9` on it.
 - `SumRoottoLeafNumbers`: simple problem. `#tree` `#binarytree`.
 - `SurroundedRegions`: `#dfs`. first check all `'O'` on the margin and mark them and `'O's` surrounded them. then modify all `'O's` which are not marked.
 - `SwapNodesinPairs`: `#linkedlist`. try `double pointers` on it.
@@ -118,3 +132,17 @@ This document is to summarize the solutions of LeetCode problems.
 - `TwoSum`: `#hashtable` to record the position.
 - `UniqueBinarySearchTrees`: `tricky` `#tree` #binarytree` problem. iterate the root node `i` then `result += numTrees(left(i)) * numTrees(right(i))`.
 - `UniqueBinarySearchTreesII`: The same method as that of `UniqueBinarySearchTrees`. recursively generate the tree by iterating the node as root. Generate all leftChildTrees and rightChildTrees, and then generate them by making the node as root.
+- `UniquePaths`: simple `#recursion` problem.
+- `UniquePathsII`: simple `#recursion` problem. when Obstacles exists, not go through with it.
+- `ValidateBinarySearchTree`: `#tree` `#binarytree` problem. check lower bound and upper bound for each node.
+- `ValidNumber`: need more practice.
+- `ValidPalindrome`: two pointers - `i, j` - to head and tail. just check when `s[i]` and `s[j]` are alphanumeric.
+- `ValidParentheses`: simple `#stack` problem.
+- `ValidSudoku`: check whether valid for each row, column and square.
+- `WildcardMatching`: `trick` `#dp` problem. `#recursive` will be `TLE`. `opt[i][j]` represents whether `s[0]...s[i]` will match `p[0]...p[j]`.
+- `WordBreak`: `#dp` problem. `opt[j]` represents whether `s[0]...s[j]` could be combined in dictionary. `opt[j] = opt[i]` if `substring(i+1, j)` exists in dictionary.
+- `WordBreakII`: `#dp` problem. same method in `WordBreak`. Need a `#hashtable` to record the path.
+- `WordLadder`: `#bfs` problem. iterate `a` to `z` for each position of each word.
+- `WordLadderII`: `#bfs` problem. need more practice. need to handle overlapping when add path. use another `#hashtable` to store which values have been reached before this level.
+- `WordSearch`: `#dfs` problem.
+- `ZigZagConversion`: `j += 2*nRows-2`, `k = j + 2 * (nRows - i - 1)`.
