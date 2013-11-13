@@ -42,6 +42,7 @@ This document is to summarize the solutions of LeetCode problems.
 - `GrayCode`: convert a binary to the gray code by `GrayCode(i) = (i>>1)^i`.
 - `ImplementstrStr()`: simple problem.
 - `InsertInterval`: scan the whole intervals, each time get the smallest for newInterval.start and the largest for newInterval.end.
+- `InsertionSortList`: `#linkedlist` problem. split the list, n1->n2->n3->n4->null, into two part, a sorted part, n0->n1->n2->null, and an unsorted part, n3->n4->null. Each time go through the sorted part to find a position for the element would be inserted.
 - `IntegertoRoman`: simple problem. check from the largest number represents in Roman.
 - `InterleavingString`: `tricky` `#dp` problem. `opt[i+1][j+1]` represents whether `s1[0]...s1[i]` and `s2[0]...s2[j]` can be interleaved to construct s3. check `s1[i] == s3[i+j+1]` and `s2[j] == s3[i+j+1]` to make `opt[i+1][j+1] = opt[i][j+1] || opt[i+1][j]`.
 - `JumpGame`: simple problem. each time check wehther this position can be reached by previuos position.
@@ -56,6 +57,7 @@ This document is to summarize the solutions of LeetCode problems.
 - `LongestPalindromicSubstring`: scan the index of the string, check whether palindrome when the index k is in the middle.
 - `LongestSubstringWithoutRepeatingCharacters`: `tricky problem`. use `prev[]` to keep the nearest index where `s[prev[i]] = s[i]`. if it is the first occurence of the element, `prev[i] = -1`. scan the elements, `if prev[end] >= begin, begin = prev[end] + 1`.
 - `LongestValidParentheses`: `tricky problem`. `more practice`. use a struct to store the value `s[i]` and the index `i`. push `'('` into stack. each time find a match for `')'`, compute the length by `i - top(stack).index` after the matched `'('` has been popped.
+- `LRUCache`: `#lru` `#hashtable` problem. a struct `unordered_map<int, pair(list<int>::iterator, int)>` is used for cache, `list<int>` for keep the order of data.
 - `MaximalRectangle`: `tricky problem`. use `height[]` to indicate the number of consecutive `1` appearred in each column to current line. and then, the problem would be reduced to solve `LargestRectangleinHistogram`.
 - `MaximumDepthofBinaryTree`: simple problem.
 - `MaximumSubarray`: simple problem.
@@ -146,3 +148,10 @@ This document is to summarize the solutions of LeetCode problems.
 - `WordLadderII`: `#bfs` problem. need more practice. need to handle overlapping when add path. use another `#hashtable` to store which values have been reached before this level.
 - `WordSearch`: `#dfs` problem.
 - `ZigZagConversion`: `j += 2*nRows-2`, `k = j + 2 * (nRows - i - 1)`.
+
+
+The following problems come from `#leetcode` blogs.
+
+- `StringReorderDistanceApart`: `#gready` problem. each time check for the word with highest frequency first.
+- `Multiplicationofnumbers`: `tricky problem`. use left to be the multiplication of all elements on the left of `i`. right to be the multiplication of all elements on the right of `i`.
+- `Rotatinganarrayinplace`: `tricky problem`. rotate the string triple times.
